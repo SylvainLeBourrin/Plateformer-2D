@@ -33,7 +33,7 @@ public class PlayerMouve : MonoBehaviour
         //_direction.y = _rb2d.velocity.y;
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            moveDirection.y = HauteurSaut;
+            moveDirection.y = new Vector2 (_direction,HauteurSaut);
             Debug.Log("appuis sur espace");
            
         }
