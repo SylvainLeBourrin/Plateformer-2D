@@ -8,8 +8,11 @@ public class PlayerMouve : MonoBehaviour
     private Vector2 _direction;
     public float _movespeed = 20f;
     private float mytime;
-    public bool jumpInput;
+    //public bool jumpInput;
     public float m_Thrust = 400f;
+    private Vector2 moveDirection = Vector2.zero;
+    public float HauteurSaut = 4.5f; // hauteur général d'un saut
+
 
     // Start is called at the begening of everything
     void Awake()
@@ -27,9 +30,13 @@ public class PlayerMouve : MonoBehaviour
     void Update()
     {
         _direction.x = Input.GetAxis("Horizontal") * _movespeed;
-        _direction.y = _rb2d.velocity.y;
-        mytime = Time.deltaTime * 1000f;
-        jumpInput = Input.GetButtonDown("Jump"); 
+        //_direction.y = _rb2d.velocity.y;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            moveDirection.y = HauteurSaut;
+            Debug.Log("appuis sur espace");
+           
+        }
     }
     // is called after heach frame update
     void FixedUpdate()
@@ -39,13 +46,10 @@ public class PlayerMouve : MonoBehaviour
         // ligne de code , détecter si _rb2d est en contact avec le sol
         // Si en contacte , permetre le saut
         // si pas en contacte , ne pas permetre le saut.
-        if (jumpInput)
-        {
-            Vector2 jump = (new Vector2(0, m_Thrust) * mytime);
-            //Apply a force to this Rigidbody in direction of this GameObjects up axis
-            _rb2d.AddForce(jump);
-            Debug.Log(jump);
-        }
+      
+
+
+
     }
 }
 
