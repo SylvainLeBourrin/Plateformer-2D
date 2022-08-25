@@ -208,8 +208,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movespeed: 20
-  jumpInput: 0
   m_Thrust: 15
+  HauteurSaut: 4.5
 --- !u!50 &276894918
 Rigidbody2D:
   serializedVersion: 4
